@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="container" data-type="php" id="page">
+<head>
+    <title>edit Labels</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="{$jquerypath}/jquery.min.js"></script>
+    <script type="text/javascript" src="{$jquerypath}/jquery-ui.js"></script>
+    <script type="text/javascript" src="{$jquerypath}/plugins/jquery.ui.touch-punch.min.js"></script>
+    <link rel="stylesheet" type="text/css" id="mainTheme" href="{$jquerypath}/themes/{$theme}/jquery-ui.css" />
+    <link rel="stylesheet" href="{$jquerypath}/plugins/fontello/css/fontello.css" />
+
+    <style type="text/css">
+        body{font: .8em sans;}
+        #avlist, #sortlist {border:1px solid #ccc; padding:15px 15px 15px 35px;}
+        #avlist li, #sortlist li{clear:both;padding:10px;}
+        #avlist span, #sortlist span{cursor:pointer;}
+        .drag {float:left;margin-right:10px;}
+    </style>
+    <script>
+        listItems=[];
+        {loop="$cols"}
+        listItems["{$key1}"] = "{$value1.lang.$lang ? $value1.lang.$lang : $key1}";
+        {/loop}
+
+        usedItems = ['{$lbls}'];
+
+    </script>
+</head>
+<body>
+<button style="float:right" onclick="save()" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary" title="{$L.save}">
+    <span class="ui-button-icon-primary ui-icon ui-icon-disk"></span>
+    <span class="ui-button-text">{$L.save}</span>
+</button>
+<hr style="clear:both" />
+<form id="mySortForm">
+    <div>{$L.used}</div>
+    <ol id="sortlist" class="connectedSortable"></ol>
+</form>
+<div>{$L.available}</div>
+<ol id="avlist" class="connectedSortable"></ol>
+
+
+<script>
+    var hasChanged = false;
+
+    $(document).ready(function()
+    {
+
+        function liCode(nm, lbl)
+        {
+            if(!nm) return '';
+            return '<li id="xx'+nm+'" class="ui-state-default ui-selectee">'
+                   + '<span class="drag ui-icon ui-icon-arrow-2-n-s"></'+'span>'
+                   + '<input type="hidden" name="'+nm+'" />'
+                   + lbl
+                   + '</'+'li>';
+        }
+
+        var str = '';
+
+
+        // choose Columns
+        for(var i=0,j=usedItems.length; i<j; ++i) {
+            str += liCode(usedItems[i], listItems[ usedItems[i] ]);
+        }
+
+        $('#sortlist').html(str);
+
+        // the Rest
+        str = '';
+        for(e in listItems) {
+            if($.inArray(e, usedItems) == -1) {
+                str += liCode(e, listItems[e]);
+            }
+        }
+        $('#avlist').html(str);
+
+        $( "#sortlist, #avlist" ).sortable({
+            connectWith: '.connectedSortable',
+            placeholder: 'ui-state-highlight',
+            handle: 'span'
+        }).disableSelection();
+
+    });
+
+    // serialize and save
+    function save()
+    {
+        var arr = $('#mySortForm').serializeArray(),
+            toSave = [];
+
+        if(arr.length > 0) {
+            for(var i=0,j=arr.length; i<j; ++i) {
+                toSave.push(arr[i].name);
+            }
+
+            $.post(
+                    "editLabels.php?action=saveOrder&project={$projectName}&object={$objectName}",
+                    {lbls: toSave},
+                    function(data) {
+                        parent.message(data);
+                        hasChanged = true;
+                    }
+            );
+        } else {
+            alert('{$L.One_label_field_is_needed}');
+        }
+    }
+
+
+    $(window).unload(function()
+    {
+        if(hasChanged) {
+            //parent.location.reload()
+            parent.getList();
+        }
+    });
+
+
+
+</script>
+
+</body>
+</html>

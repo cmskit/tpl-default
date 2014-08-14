@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" class="container" data-type="php" id="page">
+<head>
+    <title>manage Tree</title>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="{$jquerypath}/jquery.min.js"></script>
+    <script type="text/javascript" src="{$jquerypath}/jquery-ui.js"></script>
+    <script type="text/javascript" src="{$jquerypath}/plugins/jquery.foldertree.js"></script>
+    <link rel="stylesheet" type="text/css" href="{$jquerypath}/themes/{$theme}/jquery-ui.css" />
+    <link rel="stylesheet" type="text/css" href="css/packed_{$theme}.css" />
+
+    <style>
+        body{font-family:sans-serif;}
+
+        #savestat{color:green;}
+
+        .treewrap {
+            width: 330px;
+            float: left;
+            margin-left: 10px;
+            overflow-x: hidden;
+        }
+        #formwrap {
+            width: 200px;
+        }
+        #frm input {
+            width: 80px;
+            float:right;
+        }
+        #frm p {
+            clear:both;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="controls" class="ui-widget-header ui-corner-all">
+    <button
+            onclick=""
+            style="float:right"
+            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary"
+            role="button"
+            aria-disabled="false">
+        <span class="ui-button-icon-primary ui-icon ui-icon-help"></span>
+        <span class="ui-button-text">{$L.Help}</span>
+    </button>
+    <button
+            onclick="window.location='editLabels.php{$url_params}'"
+            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary"
+            role="button"
+            aria-disabled="false">
+        <span class="ui-button-icon-primary ui-icon ui-icon-tag"></span>
+        <span class="ui-button-text">{$L.List_labels}</span>
+    </button>
+    <button
+            onclick="window.location='editList.php{$url_params}'"
+            class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary"
+            role="button"
+            aria-disabled="false">
+        <span class="ui-button-icon-primary ui-icon ui-icon-shuffle"></span>
+        <span class="ui-button-text">{$L.List_sort}</span>
+    </button>
+</div>
+
+<div class="treewrap">
+    <h3>{$L.Parent_Tree}</h3>
+    <div class="tree" id="pid"></div>
+</div>
+
+<div id="formwrap" class="treewrap">
+    <h3>{$L.Connect_parent_child}</h3>
+    <form id="frm" method="post" action="manageTree.php{$url_params}" onsubmit="$('#waiter').show()">
+        <p><input type="radio" onclick="toid='#i_pid'" name="s" checked="checked" /><input id="i_pid" type="text" name="pid" /><label>{$L.Parent_ID} *</label> </p>
+        <p><input type="radio" onclick="toid='#i_bid'" name="s" /><input id="i_bid" type="text" name="bid" /><label>{$L.Beneath_ID}</label>  </p>
+        <p><input type="radio" onclick="toid='#i_cid'" name="s" /><input id="i_cid" type="text" name="cid" /><label>{$L.Child_ID} *</label>  </p>
+        <p>
+            <button
+                    type="submit"
+                    class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-icon-primary"
+                    role="button"
+                    aria-disabled="false">
+                <span class="ui-button-icon-primary ui-icon ui-icon-link"></span>
+                <span class="ui-button-text">{$L.connect}</span>
+            </button>
+        </p>
+        <p id="savestat"><?php echo $message?></p>
+    </form>
+</div>
+
+<script>
+
+    // draw the Trees
+    var params = '{$js_params}';
+    var toid = "#i_pid"
+    $(document).ready(function()
+    {
+        $('.tree').folderTree({
+            script: params,
+            statCheck: function(target)
+            {
+                target.find('li>span').each(function(i)
+                {
+                    // add the ID to the Label
+                    var i = $(this).data('id')
+                    if(i) {$(this).append(' - [ ID: '+i+' ]')}
+                    // set Click-Handler
+                    $(this).on('click', function(e) {
+                        $(this).css('background','#fff');
+                        //$('#input_'+$(this).parents('.tree').attr('id'))
+                        $(toid).val( $(e.target).data('id') );
+                    })
+                })
+            }
+        });
+        $('body').on(
+                {
+                    ajaxStart: function() {
+                        $(this).addClass('loading');
+                    },
+                    ajaxStop: function() {
+                        $(this).removeClass('loading');
+                    }
+                });
+    });
+
+    {if="message"}
+        parent.message("{$message}")
+    {/if}
+</script>
+
+<div class="wait"></div>
+</body>
+</html>
