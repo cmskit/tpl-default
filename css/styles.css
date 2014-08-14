@@ -338,7 +338,7 @@ span.ui-icon-arrow-2-n-s, span.ui-icon-arrow-4 {
 
 /* styles for Placeholder-Text */
 :-moz-placeholder {
-    color: #fcActive;
+    color: $fcActive;
 }
 
 ::-moz-placeholder {
