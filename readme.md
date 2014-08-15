@@ -6,12 +6,10 @@ Installation path: backend/templates/default
 
 This is the default template for cms-kit. I is (somehow) required by the core,
 
-A header with selectboxes
+A header with selectboxes (sections, templates, wizards)
 
 and a 3-column body
 
 1. Paginated list of all enries
 2. Edit-area
 3. Paginated list of connected entries
-
-bla
