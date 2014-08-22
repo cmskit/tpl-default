@@ -5,7 +5,7 @@ $config = <<<EOD
     "lessify": true,
     "src": [
       {
-        "path": "VENDOR/cmskit/lib-jquery-ui/plugins/css/jquery.foldertree.css",
+        "path": "VENDOR/cmskit/jquery-ui/plugins/css/jquery.foldertree.css",
         "compress": true
       },
       {
@@ -30,13 +30,13 @@ $config = <<<EOD
         "no_commenthead": false
       },
       {
-        "path": "VENDOR/cmskit/lib-jquery-ui/plugins/jquery.autosize.min.js",
+        "path": "VENDOR/cmskit/jquery-ui/plugins/jquery.autosize.min.js",
         "compress": true,
         "translate": false,
         "no_commenthead": false
       },
       {
-        "path": "VENDOR/cmskit/lib-jquery-ui/plugins/jquery.foldertree.js",
+        "path": "VENDOR/cmskit/jquery-ui/plugins/jquery.foldertree.js",
         "compress": true,
         "translate": false,
         "no_commenthead": true

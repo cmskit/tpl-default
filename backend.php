@@ -28,7 +28,7 @@ $data = array(
                                 )
     ),
     'client' => json_encode($_SESSION[$projectName]['client']),
-    'jquerypath' => '../vendor/cmskit/lib-jquery-ui',
+    'jquerypath' => '../vendor/cmskit/jquery-ui',
     'theme' => is_array($_SESSION[$projectName]['settings']['interface']['theme']) ? end($_SESSION[$projectName]['settings']['interface']['theme']) : 'smoothness',
     'dropdowns' => buildDropdowns($projectName, $objectName, $user_wizards),
 

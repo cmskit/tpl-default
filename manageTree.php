@@ -88,7 +88,7 @@ if ( isset($_POST['pid']) && !empty($_POST['cid']) ) {
 }
 
 $data = array(
-    'jquerypath' => '../../../vendor/cmskit/lib-jquery-ui',
+    'jquerypath' => '../../../vendor/cmskit/jquery-ui',
     'theme' => end($_SESSION[$projectName]['settings']['interface']['theme']),
     'url_params' => '?project='.$projectName.'&object='.$objectName,
     'js_params' => '../../crud.php?action=getTreeList&project='.$projectName.'&object='.$objectName.'&objectId=0&tType='.$treeType.'&limit=20&offset=',

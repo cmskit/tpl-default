@@ -51,7 +51,7 @@ if (isset($_GET['action']) && $_GET['action']=='saveOrder' && isset($_POST['orde
 
 
 $data = array(
-    'jquerypath' => '../../../vendor/cmskit/lib-jquery-ui',
+    'jquerypath' => '../../../vendor/cmskit/jquery-ui',
     'theme' => end($_SESSION[$projectName]['settings']['interface']['theme']),
     'objectName' => $objectName,
     'projectName' => $projectName,
