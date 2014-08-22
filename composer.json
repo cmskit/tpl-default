@@ -1,5 +1,5 @@
 {
-    "name": "cms-kit template default",
+    "name": "cmskit/template-default",
     "type": "library",
     "version": "0.0.0",
     "description": "The default backend template for cms-kit",
