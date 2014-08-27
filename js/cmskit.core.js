@@ -11,8 +11,7 @@
 *
 *  The GNU General Public License can be found at
 *  http://www.gnu.org/licenses/gpl.html
-*  A copy is found in the textfile GPL.txt and important notices to other licenses
-*  can be found found in LICENSES.txt distributed with these scripts.
+
 *
 *  This script is distributed in the hope that it will be useful,
 *  but WITHOUT ANY WARRANTY; without even the implied warranty of
@@ -130,7 +129,7 @@ function styleButtons(id)
 		if($(this).attr('rel'))
 		{
 			if(!$(this).attr('title'))$(this).attr('title','');
-			$(this).button( {
+			$(this).button({
 				icons:{primary:'ui-icon-'+$(this).attr('rel')}, 
 				text:(($(this).text()=='.')?false:true),
 				title:''
