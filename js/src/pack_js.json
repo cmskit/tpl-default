@@ -1,16 +1,16 @@
 {
     "src": [
         {
-            "path": "DIR/cmskit.core.js",
+            "path": "DIR/fn.*.js",
             "compress": true,
             "translate": true,
             "no_commenthead": true
         },
         {
-            "path": "DIR/cmskit.desktop.js",
+            "path": "DIR/cmskit.core.js",
             "compress": true,
             "translate": true,
-            "no_commenthead": false
+            "no_commenthead": true
         },
         {
             "path": "VENDOR/cmskit/jquery-ui/plugins/jquery.autosize.min.js",
@@ -25,5 +25,5 @@
             "no_commenthead": true
         }
     ],
-    "out": "DIR/packed_LANG.js"
+    "out": "DIR/../packed_LANG.js"
 }
