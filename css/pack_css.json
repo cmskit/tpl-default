@@ -1,0 +1,14 @@
+{
+    "lessify": true,
+    "src": [
+        {
+            "path": "VENDOR/cmskit/jquery-ui/plugins/css/jquery.foldertree.css",
+            "compress": true
+        },
+        {
+            "path": "DIR/styles.css",
+            "compress": true
+        }
+    ],
+    "out": "DIR/packed_UI.css"
+}

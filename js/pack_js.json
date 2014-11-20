@@ -1,0 +1,29 @@
+{
+    "src": [
+        {
+            "path": "DIR/cmskit.core.js",
+            "compress": true,
+            "translate": true,
+            "no_commenthead": true
+        },
+        {
+            "path": "DIR/cmskit.desktop.js",
+            "compress": true,
+            "translate": true,
+            "no_commenthead": false
+        },
+        {
+            "path": "VENDOR/cmskit/jquery-ui/plugins/jquery.autosize.min.js",
+            "compress": true,
+            "translate": false,
+            "no_commenthead": false
+        },
+        {
+            "path": "VENDOR/cmskit/jquery-ui/plugins/jquery.foldertree.js",
+            "compress": true,
+            "translate": false,
+            "no_commenthead": true
+        }
+    ],
+    "out": "DIR/packed_LANG.js"
+}
