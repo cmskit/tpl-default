@@ -10,5 +10,5 @@
             "compress": true
         }
     ],
-    "out": "DIR/packed_UI.css"
+    "out": "DIR/../packed_UI.css"
 }

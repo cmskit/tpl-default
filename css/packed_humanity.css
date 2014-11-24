@@ -1,4 +1,4 @@
-/* AUTO-CREATED FILE (build at 2014-11-13 16:49:31) do not edit! */
+/* AUTO-CREATED FILE (built at 2014-11-22 19:44:54) do not edit! */
 /* jqueryFolderTree */
 
 #mainlist2
@@ -29,7 +29,7 @@ ul.jqueryFolderTree a:hover
 }
 .jqueryFolderTree li a.nosubs
 {
-	background: url(../plugins/foldertree/nosubs.png) no-repeat;
+	background: url(../../../../vendor/cmskit/jquery-ui/plugins/css/foldertree/nosubs.png) no-repeat;
 	cursor: default;
 	display: block;
 	float: left;
@@ -43,22 +43,17 @@ ul.jqueryFolderTree a:hover
 }
 .jqueryFolderTree li a.home
 {
-	background: url(../plugins/foldertree/house.png) no-repeat;
+	background: url(../../../../vendor/cmskit/jquery-ui/plugins/css/foldertree/house.png) no-repeat;
 	display: none;
 	padding: 0px 4px 0px 4px;
 }
-.jqueryFolderTree .wait
+.jqueryFolderTree .wait, .jqueryFolderTree .waitb
 {
-	background: url(../plugins/foldertree/spinner.gif) no-repeat;
+	background: url(../../../../vendor/cmskit/jquery-ui/plugins/css/foldertree/spinner.gif) no-repeat;
 	display: inline-block;
 	padding: 0px 4px 0px 4px;
 }
-.jqueryFolderTree .waitb
-{
-	background: url(../plugins/foldertree/spinner.gif) no-repeat;
-	display: inline-block;
-	padding: 0px 4px 0px 4px;
-}
+
 .jqueryFolderTree .master
 {
 	clear: left;
@@ -81,7 +76,7 @@ ul.jqueryFolderTree a:hover
 }
 .jqueryFolderTree span
 {
-	background: #ede4d4 url(images/ui-bg_glass_70_ede4d4_1x400.png) 50% 50% repeat-x;
+	background: #ede4d4 url(../../../../vendor/cmskit/jquery-ui/themes/cupertino/images/ui-bg_glass_70_ede4d4_1x400.png) 50% 50% repeat-x;
 	border: 1px solid #cdc3b7;
 	color: 3f3731;
 	cursor: pointer;
@@ -94,7 +89,7 @@ ul.jqueryFolderTree a:hover
 /* additional styles */
 
 body {
-    background: url("var/www/html/cmskit/backend/../vendor/cmskit/jquery-ui/themes/humanity/images/ui-bg_inset-soft_25_f4f0ec_1x100.png") repeat-x scroll 50% bottom #f4f0ec;
+    background: url("../../../../vendor/cmskit/jquery-ui/themes/cupertino/images/ui-bg_inset-soft_25_f4f0ec_1x100.png") repeat-x scroll 50% bottom #f4f0ec;
     color: #1e1b1d;
     font-family: Helvetica,Arial,sans-serif;
     font-size: 62.5%;
@@ -386,7 +381,7 @@ option {
 }
 
 .ui-autocomplete-loading {
-    background: white url('../spinner-mini.gif') right center no-repeat;
+    background: white url('spinner-mid.gif') right center no-repeat;
 }
 
 .embed_frame {
@@ -412,7 +407,7 @@ span.ui-icon-arrow-2-n-s, span.ui-icon-arrow-4 {
 }
 
 .list li a, .list select {
-    background: #ede4d4 url(var/www/html/cmskit/backend/../vendor/cmskit/jquery-ui/themes/humanity/images/ui-bg_glass_70_ede4d4_1x400.png) 50% 50% repeat-x;
+    background: #ede4d4 url(../../../../vendor/cmskit/jquery-ui/themes/cupertino/images/ui-bg_glass_70_ede4d4_1x400.png) 50% 50% repeat-x;
     border: 1px solid #cdc3b7;
     color: #3f3731;
     cursor: pointer;
@@ -431,7 +426,7 @@ span.ui-icon-arrow-2-n-s, span.ui-icon-arrow-4 {
 
 /* styles for Placeholder-Text */
 :-moz-placeholder {
-    color: $b85700;
+    color: #b85700;
 }
 
 ::-moz-placeholder {
@@ -451,7 +446,7 @@ span.ui-icon-arrow-2-n-s, span.ui-icon-arrow-4 {
     left: 0;
     height: 100%;
     width: 100%;
-    background: rgba(255, 255, 255, .5) url('../spinner-big.gif') 50% 50% no-repeat;
+    background: rgba(255, 255, 255, .5) url('spinner-big.gif') 50% 50% no-repeat;
 }
 
 body.loading {
@@ -468,13 +463,13 @@ body.loading .wait {
     display: inline;
 }
 
-/* Allow Fontello Icons in lieu of jQuery UI and only apply when using a FA icon */
+/* Allow Fontello Icons in lieu of jQuery cupertino and only apply when using a FA icon */
 .ui-icon[class*=" fa-icon-"] {
-    /* Remove the jQuery UI Icon */
+    /* Remove the jQuery cupertino Icon */
     background: none repeat scroll 0 0 transparent;
-    /* Remove the jQuery UI Text Indent */
+    /* Remove the jQuery cupertino Text Indent */
     text-indent: 0;
-    /* Bump it up - jQuery UI is -8px */
+    /* Bump it up - jQuery cupertino is -8px */
     margin-top: -0.5em;
     height: 2em;
     color: #b85700;
@@ -491,12 +486,12 @@ body.loading .wait {
 }
 
 .ui-button-icon-only .ui-icon[class*=" fa-icon-"] {
-    /* Bump it - jQuery UI is -8px */
+    /* Bump it - jQuery cupertino is -8px */
     margin-left: -7px;
 }
 
 /*
- *	UI-Layout PANES & CONTENT-DIVs
+ *	cupertino-Layout PANES & CONTENT-DIVs
  */
 .ui-layout-pane {
     /* all 'panes' */

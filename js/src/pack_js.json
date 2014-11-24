@@ -7,7 +7,7 @@
             "no_commenthead": true
         },
         {
-            "path": "DIR/cmskit.core.js",
+            "path": "DIR/default.core.js",
             "compress": true,
             "translate": true,
             "no_commenthead": true
