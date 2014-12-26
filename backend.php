@@ -1,5 +1,5 @@
 <?php
-
+include __DIR__ . '/buildDropdowns.php';
 
 $data = array(
     'projectName' => $projectName,
