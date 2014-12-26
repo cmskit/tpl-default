@@ -24,7 +24,7 @@
 
 
 /**
- * loads references
+ * load references
  *
  * name: getReferences
  * @param id

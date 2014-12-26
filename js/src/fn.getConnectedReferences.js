@@ -43,8 +43,8 @@ function getConnectedReferences(id, off, obj)
             object: (obj?obj:objectName),
             objectId: id,
             limit: limitNumber,
-            actTemplate: 'default',
-            offset: off
+            offset: off,
+            actTemplate: 'default'
         },
         function(data)
         {

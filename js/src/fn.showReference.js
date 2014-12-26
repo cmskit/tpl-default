@@ -28,6 +28,5 @@
  */
 function showReference (obj)
 {
-    if(hasCanged) {	if(!confirm(_('skip_saving'))) return; }
     window.location = 'backend.php?ttemplate=default&project=' + projectName + '&object=' + obj.data('object') + '#id=' + obj.data('id');
 }

@@ -37,6 +37,7 @@ function saveContent (id, obj)
     // serialize the Form
     var s = $('#colMidb').serialize();
 
+
     // fix ignoring unchecked Checkboxes
     $('#colMidb .checkbox').each(function(){if(!$(this).prop('checked')) s += '&' + $(this).attr('name') + '=0';});
 
@@ -87,7 +88,7 @@ function saveContent (id, obj)
 
             if(!obj) getList(id);
             hasCanged = false;
-
+            window.serializedInputs = s;
             // call the dummy-function
             afterSaveContent(id, obj);
         }

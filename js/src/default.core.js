@@ -250,10 +250,24 @@ $.ctrl('A', function(s) {tryTo('createButton', 'click')}, []);
 $.ctrl('S', function(s) {tryTo('saveButton', 'click')}, []);
 $.ctrl('D', function(s) {tryTo('deleteButton', 'click')}, []);
 
-$(window).unload(function()
+function callUnload(){
+    if(!checkForChanges() && !confirm(_('skip_saving?'))){
+        return
+    }
+}
+
+// do some actions before webpage is unloaded
+window.onbeforeunload = function(){
+    if(!checkForChanges()){
+        return _('skip_saving?')
+    }
+};
+
+
+
+$(window).on('unload', function()
 {
-	//window.name=JSON.stringify(store)
-	// send the sore to a session-variable
+    // send the sore to a session-variable
 	setStore();
 	leaveContent();
 });

@@ -36,16 +36,15 @@ function getContent(id, obj) {
     if (id == 'undefined') {
         return false
     }
-    ;
+    //
+    if(!checkForChanges() && !confirm(_('skip_saving?'))){
+        return
+    }
 
 
     checkCenterWidth();
 
-    if (hasCanged) {
-        //if(!confirm(_('skip_saving'))) return;
-    }
-    ;
-    hasCanged = false;
+
 
 // check if there is a active item to call leaveContent
     leaveContent();
@@ -191,6 +190,9 @@ function getContent(id, obj) {
 
             styleButtons('colMidb');
             //myLayout.initContent('east');
+
+            // put the loaded content into a global variable
+            window.serializedInputs = $('#colMidb').serialize();
 
             afterGetContent(id);
         });
