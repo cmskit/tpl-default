@@ -46,7 +46,7 @@ function getContent(id, obj) {
 
 
 
-// check if there is a active item to call leaveContent
+    // check if there is a active item to call leaveContent
     leaveContent();
 
     activeItem = {obj: (obj ? obj : objectName), id: id};
@@ -177,9 +177,10 @@ function getContent(id, obj) {
                 var ev = (e.prop('type') == 'text' || e.prop('nodeName') == 'TEXTAREA') ? 'keyup' : 'change';
 
                 // activate the change-listener
+                /*
                 e[ev](function () {
                     hasCanged = true;
-                });
+                });*/
 
 
             });// $('#colMidb .inp') END

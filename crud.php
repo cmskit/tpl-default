@@ -820,7 +820,7 @@ class default_crud extends crud
 
 
         $head = '<div>'
-            . '<div title="' . (!empty($counter) ? 'ctrl+' . $counter : '') . '" onclick="getReferences(objectId,0,0,\'' . $referenceName . '\')" class="ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">'
+            . '<div title="' . (!empty($counter) ? 'ctrl+' . $counter : '') . '" onclick="getReferences(objectId, 0, 0, \'' . $referenceName . '\')" class="ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">'
             . '<span style="font-weight:bold;padding:15px">'
             //. (!empty($counter)?'('.$counter.') ':'')
             . (
@@ -832,7 +832,7 @@ class default_crud extends crud
 
         // if needed, add prev-button
         if ($this->offset > 0) {
-            $head .= '<button rel="arrowthick-1-w" title="' . $this->L('prev') . '" onclick="getConnectedReferences(\'' . $this->objectId . '\',' . ($this->offset - $this->limit) . ')">.</button>';
+            $head .= '<button rel="arrowthick-1-w" title="' . $this->L('prev') . '" onclick="getConnectedReferences(\'' . $this->objectId . '\',' . ($this->offset - $this->limit) . ',\''.$referenceName.'\')">.</button>';
         }
 
 
@@ -850,7 +850,7 @@ class default_crud extends crud
 
                 // if needed add next-button
                 if ($c >= $this->limit) {
-                    $head .= '<button rel="arrowthick-1-e" title="' . $this->L('next') . '" onclick="getConnectedReferences(\'' . $this->objectId . '\',' . ($this->offset + $this->limit) . ')">.</button>';
+                    $head .= '<button rel="arrowthick-1-e" title="' . $this->L('next') . '" onclick="getConnectedReferences(\'' . $this->objectId . '\',' . ($this->offset + $this->limit) . ',\''.$referenceName.'\')">.</button>';
                 }
 
                 $c++;
@@ -895,21 +895,30 @@ class default_crud extends crud
      */
     public function getConnectedReferences()
     {
+
         $o = $this->projectName . '\\' . $this->objectName;
         $obj = new $o();
 
         $item = $obj->Get($this->objectId);
-        $pId = false;
-        $out = '';
 
+        $out = '';
+        if(!empty($this->referenceName)) {
+            return $out;
+        }
 
         // loop all Relations
         if (isset($this->objects[$this->objectName]['rel'])) {
             $c = 1;
-            foreach ($this->objects[$this->objectName]['rel'] as $rk => $rt) {
-                $out .= $this->getConnectedReferenceList($item, $rk, true, false, $c);
-                $c++;
+            if(empty($this->referenceName)) {
+                foreach ($this->objects[$this->objectName]['rel'] as $rk => $rt) {
+                    //  getConnectedReferenceList($item, $referenceName, $noconnectors = true, $connected = false, $counter)
+                    $out .= $this->getConnectedReferenceList($item, $rk, true, false, $c);
+                    $c++;
+                }
+            }else {
+                $out .= 'xx';//$this->getConnectedReferenceList($item, $this->referenceName, true, false, 1);
             }
+
         } else {
             $out = '';
         }
@@ -919,6 +928,9 @@ class default_crud extends crud
     }
 
 
+    /**
+     * @return string
+     */
     public function setReference()
     {
         //return 'huhu';
@@ -965,8 +977,7 @@ class default_crud extends crud
     {
         //return $this->objectName;
 
-        //require_once($this->ppath . '/objects/class.' . $this->objectName . '.php');
-        //require_once($this->ppath . '/objects/class.' . $this->referenceName . '.php');
+
 
         $str0 = '<input class="sbox ui-corner-all" id="referenceSearchbox" placeholder="' . $this->L('search') . '" type="text" /><div>';
         $str1 = '';

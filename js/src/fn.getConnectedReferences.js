@@ -31,7 +31,7 @@
  * @param off
  * @param obj
  */
-function getConnectedReferences(id, off, obj)
+function getConnectedReferences(id, off, refName)
 {
     if(!off) off=0;
 
@@ -40,7 +40,8 @@ function getConnectedReferences(id, off, obj)
         {
             action: 'getConnectedReferences',
             project: projectName,
-            object: (obj?obj:objectName),
+            object: objectName,
+            referenceName: (refName||null),
             objectId: id,
             limit: limitNumber,
             offset: off,
